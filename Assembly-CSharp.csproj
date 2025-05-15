@@ -71,7 +71,6 @@
     <Compile Include="Assets\UTS-VR001-K6-main\Assets\MouseCameraController.cs" />
     <Compile Include="Assets\UTS-VR001-K6-main\Assets\BoxDeliveryManager.cs" />
     <Compile Include="Assets\UTS-VR001-K6-main\Assets\Warehouse\Demo\Scripts\MouseComponent.cs" />
-    <Compile Include="Assets\UTS-VR001-K6-main\Assets\MissionManager.cs" />
     <Compile Include="Assets\UTS-VR001-K6-main\Assets\ForkliftControllerUpdate.cs" />
     <Compile Include="Assets\UTS-VR001-K6-main\Assets\ForkliftController.cs" />
     <Compile Include="Assets\UTS-VR001-K6-main\Assets\CarController.cs" />
