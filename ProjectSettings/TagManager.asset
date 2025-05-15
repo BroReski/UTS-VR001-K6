@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pallet
   - checkpoint
+  - Pallet B
+  - Pallet C
   layers:
   - Default
   - TransparentFX
