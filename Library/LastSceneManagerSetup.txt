@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/UTS-VR001-K6-main/Assets/Warehouse/Demo/Scene/DrivingForklift.unity
+- path: Assets/UTS-VR001-K6-main/Assets/Warehouse/Demo/Scene/POVPlayer.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

@@ -2,46 +2,59 @@ using UnityEngine;
 
 public class LifterControl : MonoBehaviour
 {
-    public float liftSpeed = 2f; // Kecepatan naik/turun lifter
-    public string liftUpButton = "q"; // Tombol untuk naik (bisa diubah di Inspector)
-    public string liftDownButton = "e"; // Tombol untuk turun (bisa diubah di Inspector)
-    public float minYPosition = 0f; // Batas posisi Y minimum lifter (relatif terhadap posisi awal)
-    public float maxYPosition = 2f; // Batas posisi Y maksimum lifter (relatif terhadap posisi awal)
+    // Kecepatan naik/turun lifter
+    public float liftSpeed = 2f;
+    
+    // Tombol untuk menggerakkan lifter naik dan turun (bisa diubah di Inspector)
+    public string liftUpButton = "q";
+    public string liftDownButton = "e";
 
+    // Batas posisi Y minimum dan maksimum lifter (relatif terhadap posisi awal)
+    public float minYPosition = 0f;
+    public float maxYPosition = 2f;
+
+    // Menyimpan posisi awal lifter
     private Vector3 initialPosition;
+
+    // Transform objek lifter untuk memudahkan manipulasi posisi
     private Transform lifterTransform;
 
     void Start()
     {
-        // Asumsikan script ini terpasang pada objek yang merupakan "lifter" itu sendiri
+        // Mendapatkan transform dari objek yang memiliki script ini
         lifterTransform = transform;
-        initialPosition = lifterTransform.localPosition; // Gunakan localPosition karena lifter mungkin bagian dari hierarki forklift
+
+        // Menyimpan posisi awal objek lifter dalam koordinat lokal
+        initialPosition = lifterTransform.localPosition; // localPosition digunakan agar relatif terhadap parent
     }
 
     void Update()
     {
+        // Variabel untuk input vertikal (naik/turun)
         float verticalInput = 0f;
 
+        // Mengecek input untuk pergerakan naik
         if (Input.GetKey(liftUpButton))
         {
             verticalInput = 1f;
         }
+        // Mengecek input untuk pergerakan turun
         else if (Input.GetKey(liftDownButton))
         {
             verticalInput = -1f;
         }
 
-        // Hitung perubahan posisi berdasarkan input dan kecepatan
+        // Menghitung perubahan posisi berdasarkan input dan kecepatan lifter
         float liftChange = verticalInput * liftSpeed * Time.deltaTime;
 
-        // Aplikasikan perubahan posisi pada sumbu Y lokal
+        // Mengambil posisi lokal saat ini dan menambahkannya dengan perubahan posisi
         Vector3 newLocalPosition = lifterTransform.localPosition;
         newLocalPosition.y += liftChange;
 
-        // Batasi posisi lifter agar tidak melebihi batas minimum dan maksimum
+        // Membatasi posisi lifter agar tidak melebihi batas minimum dan maksimum
         newLocalPosition.y = Mathf.Clamp(newLocalPosition.y, initialPosition.y + minYPosition, initialPosition.y + maxYPosition);
 
-        // Terapkan posisi baru
+        // Menerapkan posisi baru ke transform lifter
         lifterTransform.localPosition = newLocalPosition;
     }
 }
